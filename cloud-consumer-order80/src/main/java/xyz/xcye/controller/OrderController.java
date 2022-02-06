@@ -47,4 +47,10 @@ public class OrderController {
         ResponseEntity<CommonResult> forEntity = restTemplate.getForEntity(serviceUrl.getPaymentUrl() + "/payment/get/" + id,CommonResult.class);
         return forEntity;
     }
+
+    @GetMapping("/payment/zipkin")
+    public String paymentZipkin() {
+        String result = restTemplate.getForObject("http://localhost:8001/payment/zipkin/", String.class);
+        return result;
+    }
 }
